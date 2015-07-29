@@ -11,7 +11,7 @@ var users = require('./routes/users');
 var app = express();
 
 // sets port 8080 to default or unless otherwise specified in the environment
-app.set('port', process.env.PORT || 80);
+app.set('port', 80);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
