@@ -8,13 +8,6 @@ var expHbs = require('express-handlebars');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-app.get('/test', function(req, res) {
-    res.render('test', {
-        title: 'The awesome website',
-        topic: 'Porridge'
-    });
-});
-
 var app = express();
 
 // view engine setup
@@ -28,6 +21,14 @@ app.use(cookiesession({
 	name: 'session',
 	keys: ['key1']
 }));
+
+// do handlebars
+app.get('/test', function(req, res) {
+    res.render('test', {
+        title: 'The awesome website',
+        topic: 'Porridge'
+    });
+});
 
 //allow jade to pick up all sessions
 app.use(function (req, res, next) {
