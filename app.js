@@ -3,15 +3,23 @@ var path = require('path');
 var cookiesession = require('cookie-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var expHbs = require('express-handlebars');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+app.get('/test', function(req, res) {
+    res.render('test', {
+        title: 'The awesome website',
+        topic: 'Porridge'
+    });
+});
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', '.hbs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,6 +49,14 @@ app.use(function (req, res, next) {
     next(err);
 });
 
+app.engine('.hbs', expHbs({
+    extname: '.hbs',
+    defaultLayout: 'master',
+    partialsDir: __dirname + '/views/partials',
+    layoutsDir: __dirname + '/views',
+    helpers: {
+    }
+}));
 
 
 // error handlers
