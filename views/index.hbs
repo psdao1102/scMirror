@@ -1,1 +1,56 @@
-Home page!
+<section id="content">
+  <div class="container">
+    <div class="row" id="content-wrapper">
+      <div class="col-xs-12">
+ 
+        <!-- page header container -->
+        <div class="row">
+
+          <div class="col-sm-8">
+
+            <div class="page-header">
+              <!-- page title -->
+              <h1 class="pull-left">
+                <i class="icon-th"></i>
+                <span>Welcome</span>
+              </h1>
+              <!-- breadcrumbs -->
+              <div class="pull-right">
+                <ul class="breadcrumb">
+                  <li>
+                    <a href="index.html">
+                      <i class="icon-bar-chart"></i>
+                    </a>
+                  </li>
+                  <li class="separator">
+                    <i class="icon-angle-right"></i>
+                  </li>
+                  <li class="active">Hmm</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+ 
+        </div>
+
+        <div class="row">
+
+          <!-- content of page -->
+          <div class="col-sm-8">
+			<h1>Family Fave</h1>
+			<p>
+				{{#if session.activeuser}}
+					Welcome {{session.activeuser.data.firstName}}
+				{{else}}
+					Welcome to Family Fave!
+					<br><a class="btn btn-primary" href="/users/registerform">Sign Up &gt;</a>
+				{{/if}}
+			</p>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

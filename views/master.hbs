@@ -8,7 +8,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-	<link rel="stylesheet" href="/build/build.css">
+	<link rel="stylesheet" href="/build/css/build.css">
 
 	<script type="text/javascript" src="/build/js/master.min.js"></script>
 
@@ -18,11 +18,23 @@
 	{{>header}}
 
 	<div id="wrapper">
+
 		<div id="main-nav-bg"></div>
+
 		{{>nav}}
+
+		{{#if message}}
+			<div class="alert alert-danger">
+				<p>
+					{{message}}
+				</p>
+			</div>
+		{{/if}}
+
 		<section id="content">
 			{{{body}}}
 		</section>
+
 	</div>
 
 </body>

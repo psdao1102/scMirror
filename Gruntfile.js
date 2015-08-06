@@ -11,8 +11,8 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'public/js/bootstrap.min.js',
           'public/js/jquery.min.js',
+          'public/js/bootstrap.min.js',
           'public/js/jquery-migrate.min.js',
           'public/js/theme.js',
           'public/js/jquery-ui.min.js'
@@ -34,16 +34,14 @@ module.exports = function(grunt) {
     compass: {
       dist: {
         options: {
-          sassDir: 'public/theme/compass/sass/build.scss',
-          cssDir: 'public/build/css',
           config: 'public/theme/compass/config.rb',
+          specify: 'public/theme/compass/sass/build.scss',
           environment: 'production'
         }
       },
       dev: {
         options: {
-          sassDir: 'public/theme/compass/sass/build.scss',
-          cssDir: 'public/build/css',
+          specify: 'public/theme/compass/sass/build.scss',
           config: 'public/theme/compass/config.rb'
         }
       }

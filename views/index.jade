@@ -1,8 +1,0 @@
-﻿extends layout
-
-block content
-  h1 Family Fave
-  if session.activeuser
-   p Welcome #{session.activeuser.data.firstName}
-  else
-   p Welcome to Family Fave!
