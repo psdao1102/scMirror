@@ -22,14 +22,6 @@ app.use(cookiesession({
 	keys: ['key1']
 }));
 
-// do handlebars
-app.get('/test', function(req, res) {
-    res.render('test', {
-        title: 'The awesome website',
-        topic: 'Porridge'
-    });
-});
-
 //allow jade to pick up all sessions
 app.use(function (req, res, next) {
 	if (req.session) {

@@ -4,18 +4,6 @@ var hash = require('node_hash');
 var PGConnection = require('./connection');
 var bcrypt = require('bcrypt-node');
 
-//This is sql connection info. This should probably be in its on module.
-//var config = {
-//	userName: 'pnkadmin',
-//	password: 'SuperStrongPassword1',
-//	server: 'pnk.database.windows.net', 
-//	options: {
-//		database:'PNKDB',
-//		useColumnNames:true,
-//		encrypt: true 
-//	}
-//}
-
 //constructor
 var User = function () {
 	this.data = {};

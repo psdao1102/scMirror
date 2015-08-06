@@ -1,5 +1,5 @@
 ﻿#!/usr/bin/env node
-var debug = require('debug')('PNKWeb');
+var debug = require('debug')('fmf');
 var app = require('./app');
 
 app.set('port', process.env.PORT || 3000);
