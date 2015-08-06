@@ -15,24 +15,15 @@ module.exports = function(grunt) {
       }
     },
 
-    concat: {
+    compass: {
       dist: {
-        src: [
-          'public/theme/compass/sass/*.scss',
-        ],
-        dest: 'build/master.scss',
-      }
-    },
-
-    compass: {                  // Task
-      dist: {                   // Target
-        options: {              // Target options
+        options: {
           sassDir: 'public/theme/compass/sass',
           cssDir: 'build',
           environment: 'production'
         }
       },
-      dev: {                    // Another target
+      dev: {
         options: {
           sassDir: 'public/theme/compass/sass',
           cssDir: 'build'
@@ -40,20 +31,38 @@ module.exports = function(grunt) {
       }
     },
 
-    clean: ['build/**']
+    express: {
+      dev: {
+        options: {
+          script: "startup.js",
+          port: 3000,
+          background: false
+        }
+      }
+    },
+
+    clean: ['build/**/*']
 
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-clean');
-
+  grunt.loadNpmTasks('grunt-express-server');
 
   grunt.registerTask('default', [
     'uglify',
-    'concat',
-    'compass'
+    'compass:dev'
+  ]);
+
+  grunt.registerTask('srv', [
+    'default',
+    'express'
+  ]);
+
+  grunt.registerTask('prd', [
+    'uglify',
+    'compass:dist'
   ]);
 
 };
