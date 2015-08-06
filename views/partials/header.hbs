@@ -1,0 +1,55 @@
+<header>
+  <nav class="navbar navbar-default">
+ 
+    <!-- application logo -->
+    <a class="navbar-brand" href="index.html">
+      <!-- application logo visible on large screens -->
+      <img width="81" height="21" class="logo" alt="Flatty" src="theme/html/assets/images/logo.svg">
+      <!-- application logo visible on small screens -->
+      <img width="21" height="21" class="logo-xs" alt="Flatty" src="theme/html/assets/images/logo_xs.svg">
+    </a>
+ 
+    <!-- main nav toggler (show/hide) -->
+    <a class="toggle-nav btn pull-left" href="#">
+      <i class="icon-reorder"></i>
+    </a>
+ 
+    <!-- dropdowns -->
+    <ul class="nav">
+ 
+      <!-- light dropdown -->
+      <li class="dropdown light only-icon">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <!-- ... -->
+        </a>
+        <!-- ... -->
+      </li>
+ 
+      <!-- medium dropdown & widget -->
+      <li class="dropdown medium only-icon widget">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <!-- ... -->
+        </a>
+        <!-- ... -->
+      </li>
+ 
+      <!-- dark dropdown & user menu -->
+      <li class="dropdown dark user-menu">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <img width="23" height="23" alt="Mila Kunis" src="theme/html/assets/images/avatar.jpg">
+          <span class="user-name">Mila Kunis</span>
+          <b class="caret"></b>
+        </a>
+        <!-- ... -->
+      </li>
+    </ul>
+ 
+    <!-- search form - hidden on phone -->
+    <form action="search_results.html" class="navbar-form navbar-right hidden-xs" method="get">
+      <button class="btn btn-link icon-search" name="button" type="submit"></button>
+      <div class="form-group">
+        <input value="" class="form-control" placeholder="Search..." autocomplete="off" id="q_header" name="q" type="text">
+      </div>
+    </form>
+  </nav>
+</header>
