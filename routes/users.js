@@ -1,6 +1,6 @@
 ﻿var express = require('express');
 var router = express.Router();
-var User = require('../Models/userModel');
+var User = require('../Models/UserModel');
 
 //Registration
 router.get('/registerform', function (req, res) {
