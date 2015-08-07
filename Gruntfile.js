@@ -74,11 +74,12 @@ module.exports = function(grunt) {
     watch: {
       node: {
         files: [
+          'models/**/*',
           'views/**/*',
-          'routes/**/*',
-          'Models/**/*',
+          'controllers/**/*',
           'app.js',
           'package.json',
+          'routes.js',
           'startup.js'
         ],
         tasks: [

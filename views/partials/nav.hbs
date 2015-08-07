@@ -3,7 +3,7 @@
  
     <!-- search form visible on phone -->
     <div class="search">
-      <form action="search_results.html" method="get">
+      <form action="/search" method="get">
         <div class="search-wrapper">
           <input value="" class="search-query form-control" placeholder="Search..." autocomplete="off" name="q" type="text">
           <button class="btn btn-link icon-search" name="button" type="submit"></button>
@@ -30,7 +30,7 @@
 	    <!-- join -->
 		{{#unless session.activeuser}}
 			<li {{#if nav_registerform}} class="active" {{/if}}>
-				<a href="/users/registerform">
+				<a href="/user/registerform">
 					<i class="icon-heart"></i>
 					<span>Join</span>
 				</a>
@@ -60,13 +60,13 @@
 			</a>
 			<ul class="nav nav-stacked">
 				<li>
-					<a href="/listings/create/product">
+					<a href="/listing/create/product">
 						<i class="icon-shopping-cart"></i>
 						<span>Product Listing</span>
 					</a>
 				</li>
 				<li>
-					<a href="/listings/create/recipe">
+					<a href="/listing/create/recipe">
 						<i class="icon-food"></i>
 						<span>Recipe Listing</span>
 					</a>

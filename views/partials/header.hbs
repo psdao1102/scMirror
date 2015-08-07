@@ -21,7 +21,7 @@
 
         <!-- logged out: sign in link. -->
         <li class="dark">
-          <a href="/users/login">
+          <a href="/user/login">
             <span class="user-name">Sign In</span>
           </a>
         </li>
@@ -35,10 +35,10 @@
             <span class="user-name">Jane Smith</span>
             <b class="caret"></b>
           </a>
-          <a href="/users/management">
+          <a href="/user/management">
             <span>Profile</span>
           </a>
-          <a href="/users/logout">
+          <a href="/user/logout">
             <span>Sign Out</span>
           </a>
         </li>
@@ -48,7 +48,7 @@
     </ul>
  
     <!-- search form - hidden on phone -->
-    <form action="search_results.html" class="navbar-form navbar-right hidden-xs" method="get">
+    <form action="/search" class="navbar-form navbar-right hidden-xs" method="get">
       <button class="btn btn-link icon-search" name="button" type="submit"></button>
       <div class="form-group">
         <input value="" class="form-control" placeholder="Search..." autocomplete="off" id="q_header" name="q" type="text">
