@@ -4,13 +4,18 @@ var User = require('../Models/userModel');
 
 //Registration
 router.get('/registerform', function (req, res) {
-	res.render('registerform');
+	res.render('registerform', {
+		nav_registerform: true
+	});
 });
 
 //back end logic for registration
 router.post('/register', function (req, res) {
 	if (req.body.Password != req.body.ConfirmPassword) {
-		res.render('registerform', { message: "Passwords do not match" });	
+		res.render('registerform', {
+			nav_registerform: true,
+			message: "Passwords do not match"
+		});	
 	}
 	//make a user and set its information
 	var user = new User();
@@ -21,7 +26,10 @@ router.post('/register', function (req, res) {
 	user.setAndHashPassword(req.body.Password);
 	user.Insert(function (err) { //insert that user into the database
 		if (err) {
-			res.render('registerform', { message: err });	
+			res.render('registerform', {
+				nav_registerform: true,
+				message: err
+			});	
 		}
 		res.render('thankyou');
 	});

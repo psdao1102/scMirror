@@ -7,9 +7,9 @@ module.exports = function(grunt) {
 
     concat: {
       options: {
-        separator: ';',
+        separator: ';\n',
       },
-      dist: {
+      js: {
         src: [
           'public/js/jquery.min.js',
           'public/js/bootstrap.min.js',
@@ -19,6 +19,13 @@ module.exports = function(grunt) {
         ],
         dest: 'public/build/js/master.js'
       },
+      css: {
+        src: [
+          'public/build/css/build.css',
+          'public/css/style.css'
+        ],
+        dest: 'public/build/css/build.css'
+      }
     },
 
     uglify: {
@@ -65,6 +72,19 @@ module.exports = function(grunt) {
     },
 
     watch: {
+      node: {
+        files: [
+          'views/**/*',
+          'routes/**/*',
+          'Models/**/*',
+          'app.js',
+          'package.json',
+          'startup.js'
+        ],
+        tasks: [
+          'express'
+        ]
+      },
       scripts: {
         files: [
           'public/js/**/*'
@@ -99,9 +119,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', [
-    'concat',
+    'concat:js',
     'uglify',
-    'compass:dev'
+    'compass:dev',
+    'concat:css'
   ]);
 
   grunt.registerTask('srv', [

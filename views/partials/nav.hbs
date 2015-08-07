@@ -14,61 +14,66 @@
     <!-- navigation items -->
     <ul class="nav nav-stacked">
  
-      <!-- single navigation item -->
-      <li class="active">
-        <a href="/">
-          <i class="icon-dashboard"></i>
-          <span>Home</span>
-        </a>
-      </li>
- 
-      <!-- four level dropdown -->
-      <li>
-        <a class="dropdown-collapse" href="#">
-          <i class="icon-folder-open-alt"></i>
-          <span>Four level dropdown</span>
-          <i class="icon-angle-down angle-down"></i>
-        </a>
-        <ul class="nav nav-stacked">
-          <li>
-            <a class="dropdown-collapse" href="#">
-              <i class="icon-caret-right"></i>
-              <span>Second level</span>
-              <i class="icon-angle-down angle-down"></i>
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-collapse" href="#">
-              <i class="icon-caret-right"></i>
-              <span>Second level</span>
-              <i class="icon-angle-down angle-down"></i>
-            </a>
-            <ul class="nav nav-stacked">
-              <li>
-                <a class="dropdown-collapse" href="#">
-                  <i class="icon-caret-right"></i>
-                  <span>Third level</span>
-                  <i class="icon-angle-down angle-down"></i>
-                </a>
-                <ul class="nav nav-stacked">
-                  <li>
-                    <a href="#">
-                      <i class="icon-caret-right"></i>
-                      <span>Fourth level</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="icon-caret-right"></i>
-                      <span>Another fourth level</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
+		<!-- single navigation item -->
+	    <li {{#if nav_index}} class="active" {{/if}}>
+			<a href="/">
+				{{#if session.activeuser}}
+					<i class="icon-dashboard"></i>
+					<span>Dashboard</span>
+				{{else}}
+					<i class="icon-home"></i>
+					<span>Home</span>
+				{{/if}}
+			</a>
+	    </li>
+
+	    <!-- join -->
+		{{#unless session.activeuser}}
+			<li {{#if nav_registerform}} class="active" {{/if}}>
+				<a href="/users/registerform">
+					<i class="icon-heart"></i>
+					<span>Join</span>
+				</a>
+			</li>
+		{{/unless}}
+
+		<!-- browse -->
+		<li {{#if nav_browse_products}} class="active" {{/if}}>
+			<a href="/browse/products">
+				<i class="icon-shopping-cart"></i>
+				<span>Products</span>
+			</a>
+		</li>
+		<li {{#if nav_browse_recipes}} class="active" {{/if}}>
+			<a href="/browse/recipes">
+				<i class="icon-food"></i>
+				<span>Recipes</span>
+			</a>
+		</li>
+
+		<!-- create -->
+		<li {{#if nav_create}} class="active" {{/if}}>
+			<a class="dropdown-collapse" href="#">
+				<i class="icon-plus-sign-alt"></i>
+				<span>Create</span>
+				<i class="icon-angle-down angle-down"></i>
+			</a>
+			<ul class="nav nav-stacked">
+				<li>
+					<a href="/listings/create/product">
+						<i class="icon-shopping-cart"></i>
+						<span>Product Listing</span>
+					</a>
+				</li>
+				<li>
+					<a href="/listings/create/recipe">
+						<i class="icon-food"></i>
+						<span>Recipe Listing</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+
     </ul>
   </div>
 </nav>
