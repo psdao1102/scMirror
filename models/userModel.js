@@ -20,9 +20,9 @@ var User = function () {
 
 User.prototype = {
 
-	SelectStatement: 'SELECT * FROM "Users" WHERE "Email" = $1 limit 1',
-	InsertStatement: 'INSERT INTO "Users"("FirstName","LastName","Email","Password","Description") VALUES($1,$2,$3,$4,$5)',
-	UpdateStatement: 'UPDATE "Users" SET "FirstName" = $1, "LastName"=$2,"Email"=$3,"Description"=$4 WHERE "Id"=$5',
+	SelectStatement: 'SELECT * FROM "user" WHERE "email" = $1 limit 1',
+	InsertStatement: 'INSERT INTO "user"("firstName","lastName","email","password","description") VALUES($1,$2,$3,$4,$5)',
+	UpdateStatement: 'UPDATE "user" SET "firstName" = $1, "lastName"=$2,"email"=$3,"description"=$4 WHERE "id"=$5',
 
 	setFirstName: function(firstName) {
 		this.data.firstName = firstName;
@@ -115,13 +115,13 @@ User.prototype = {
 				callback("User not Found");
 				return;
 			}
-			if (!User.prototype.compare(password, result.rows[0].Password)) {
+			if (!User.prototype.compare(password, result.rows[0].password)) {
 				callback("Incorrect Password");
 			}
-			userData.id = result.rows[0].Id; //if we get a row setup the userdata to equal that of the user data in the row.
-			userData.firstName = result.rows[0].FirstName;
-			userData.lastName = result.rows[0].LastName;
-			userData.description = result.rows[0].Description;
+			userData.id = result.rows[0].id; //if we get a row setup the userdata to equal that of the user data in the row.
+			userData.firstName = result.rows[0].firstName;
+			userData.lastName = result.rows[0].lastName;
+			userData.description = result.rows[0].description;
 			callback();
 			return;
 		});

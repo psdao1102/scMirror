@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-var userController = require('./controllers/userController');
-var listingController = require('./controllers/listingController');
-var browseController = require('./controllers/browseController');
+var UserController = require('./controllers/userController');
+var ListingController = require('./controllers/listingController');
+var BrowseController = require('./controllers/browseController');
 
+var userController = new UserController();
+var listingController = new ListingController();
+var browseController = new BrowseController();
 
 router.get('/', function (req, res) {
     res.render('index', {
@@ -13,7 +16,7 @@ router.get('/', function (req, res) {
 });
 
 
-router.get('/user/registerform', userController.registerform);
+router.get('/user/registerform', userController.registerForm);
 router.post('/user/register', userController.post_register);
 router.get('/user/login', userController.login);
 router.post('/user/login', userController.post_login);
