@@ -12,13 +12,13 @@ var ListingController = (function() {
 			});
 		},
 
-		create_product: function (req, res) {
+		createProduct: function (req, res) {
 			res.render('create/product', {
 				nav_create: true
 			});
 		},
 
-		create_recipe: function (req, res) {
+		createRecipe: function (req, res) {
 			res.render('create/recipe', {
 				nav_create: true
 			});

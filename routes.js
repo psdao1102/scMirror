@@ -31,8 +31,8 @@ router.get('/listing', function (req, res) {
     });
 });
 router.get('/listing/create', listingController.create);
-router.get('/listing/create/product', listingController.create_product);
-router.get('/listing/create/recipe', listingController.create_recipe);
+router.get('/listing/create/product', listingController.createProduct);
+router.get('/listing/create/recipe', listingController.createRecipe);
 
 
 router.get('/browse', function (req, res) {
