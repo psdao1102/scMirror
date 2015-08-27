@@ -20,9 +20,9 @@ var User = function () {
 
 User.prototype = {
 
-	SelectStatement: 'SELECT * FROM "user" WHERE "email" = $1 limit 1',
-	InsertStatement: 'INSERT INTO "user"("firstName","lastName","email","password","description") VALUES($1,$2,$3,$4,$5)',
-	UpdateStatement: 'UPDATE "user" SET "firstName" = $1, "lastName"=$2,"email"=$3,"description"=$4 WHERE "id"=$5',
+	selectStatement: 'SELECT * FROM "user" WHERE "email" = $1 limit 1',
+	insertStatement: 'INSERT INTO "user"("firstName","lastName","email","password","description") VALUES($1,$2,$3,$4,$5)',
+	updateStatement: 'UPDATE "user" SET "firstName" = $1, "lastName"=$2,"email"=$3,"description"=$4 WHERE "id"=$5',
 
 	setFirstName: function(firstName) {
 		this.data.firstName = firstName;
@@ -69,10 +69,10 @@ User.prototype = {
 		return bcrypt.compareSync(pass1, pass2); // true
 	},
 
-	Insert: function (callback) {
+	insert: function (callback) {
 		var userData = this.data;
 		var connection = new PGConnection();
-		connection.ExecuteQuery(User.prototype.InsertStatement, [userData.firstName, userData.lastName, userData.email, userData.password, userData.description ], function (err, result) {
+		connection.executeQuery(User.prototype.insertStatement, [userData.firstName, userData.lastName, userData.email, userData.password, userData.description ], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
 				callback("Server Error: Please try Again Later");
@@ -84,14 +84,14 @@ User.prototype = {
 		});
 	},
 
-	Update: function (callback) {
+	update: function (callback) {
 		if (this.data.id <= 0) { //if the id is set to 0, then this must be a new user, and should be inserted not updated.
 			callback('Must be an existing object in the database');
 			return;
 		}
 		var userData = this.data;
 		var connection = new PGConnection();
-		connection.ExecuteQuery(User.prototype.UpdateStatement, [userData.firstName, userData.lastName, userData.email, userData.description, userData.id], function (err, result) {
+		connection.executeQuery(User.prototype.updateStatement, [userData.firstName, userData.lastName, userData.email, userData.description, userData.id], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
 				callback("Server Error: Please try Again Later");
@@ -102,10 +102,10 @@ User.prototype = {
 		});
 	},
 
-	Find: function (password, callback) {
+	find: function (password, callback) {
 		var userData = this.data;
 		var connection = new PGConnection();
-		connection.ExecuteQuery(User.prototype.SelectStatement, [userData.email], function (err, result) {
+		connection.executeQuery(User.prototype.selectStatement, [userData.email], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
 				callback("Server Error: Please try Again Later");

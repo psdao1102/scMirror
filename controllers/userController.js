@@ -26,7 +26,7 @@ var UserController = (function() {
 			user.setDescription(req.body.description);
 			user.setEmail(req.body.email);
 			user.setAndHashPassword(req.body.password);
-			user.Insert(function (err) { //insert that user into the database
+			user.insert(function (err) { //insert that user into the database
 				if (err) {
 					res.render('registerform', {
 						nav_registerform: true,
@@ -48,7 +48,7 @@ var UserController = (function() {
 				var user = new User(); //make a new user and set the email and hash the password. This 2 pieces of information is all that is required to login.
 				user.setEmail(req.body.email);
 
-				user.Find(req.body.password, function (err) { //find the user
+				user.find(req.body.password, function (err) { //find the user
 					if (err) { // if there is an error, log it, and send them back to login page.
 						console.log(err);
 						res.render('login', { message: err });
@@ -76,7 +76,7 @@ var UserController = (function() {
 			user.setLastName(req.body.lastName);
 			user.setDescription(req.body.description);
 			user.setEmail(req.body.email);
-			user.Update(function (err) { //update the user
+			user.update(function (err) { //update the user
 				if (err) {
 					console.log(err); //if error send back to profile... we could add a model here to send back an error message
 					res.render('profile' , { message: err });

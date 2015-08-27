@@ -27,9 +27,9 @@ var Listing = function () {
 
 Listing.prototype = {
 
-	SelectStatement: 'SELECT * FROM "listing" WHERE "id" = $1 limit 1',
-	InsertStatementProduct: 'INSERT INTO "listing"("type","title","description","authorName","authorBio","idBarcode","idAmazon","specs") VALUES("product",$1,$2,$3,$4,$5,$6,$7)',
-	InsertStatementRecipe: 'INSERT INTO "listing"("type","title","description","authorName","authorBio","ingredients","directions","prepTime","cookTime","readyTime") VALUES("recipe",$1,$2,$3,$4,$5,$6,$7,$8,$9)',
+	selectStatement: 'SELECT * FROM "listing" WHERE "id" = $1 limit 1',
+	insertStatementProduct: 'INSERT INTO "listing"("type","title","description","authorName","authorBio","idBarcode","idAmazon","specs") VALUES("product",$1,$2,$3,$4,$5,$6,$7)',
+	insertStatementRecipe: 'INSERT INTO "listing"("type","title","description","authorName","authorBio","ingredients","directions","prepTime","cookTime","readyTime") VALUES("recipe",$1,$2,$3,$4,$5,$6,$7,$8,$9)',
 
 	setType: function(type) {
 		this.data.type = type;
@@ -133,7 +133,61 @@ Listing.prototype = {
 
 	getReadyTime: function () {
 		return this.data.readyTime;
+	},
+
+
+
+
+	insertProduct: function (callback) {
+		var listingData = this.data;
+		var connection = new PGConnection();
+		connection.executeQuery(Listing.prototype.insertStatementProduct, [listingData.title,listingData.description,listingData.authorName,listingData.authorBio,listingData.idBarcode,listingData.idAmazon,listingData.specs], function (err, result) {
+			if (err) { //if error log, and return
+				console.log(err);
+				callback("Server Error: Please try Again Later");
+				return;
+			}
+			console.log(result);
+			callback();
+			return;
+		});
+	},
+
+	insertRecipe: function (callback) {
+		var listingData = this.data;
+		var connection = new PGConnection();
+		connection.executeQuery(Listing.prototype.insertStatementRecipe, [listingData.title,listingData.description,listingData.authorName,listingData.authorBio,listingData.ingredients,listingData.directions,listingData.prepTime,listingData.cookTime,listingData.readyTime], function (err, result) {
+			if (err) { //if error log, and return
+				console.log(err);
+				callback("Server Error: Please try Again Later");
+				return;
+			}
+			console.log(result);
+			callback();
+			return;
+		});
+	},
+
+	get: function (id, callback) {
+		var listingData = this.data;
+		var connection = new PGConnection();
+		connection.executeQuery(Listing.prototype.selectStatement, [listingData.id], function (err, result) {
+			if (result.rows.length <= 0) { //no rows means we did not find a product with this id
+				callback("User not Found");
+				return;
+			}
+			// great!  set listingData to equal the selected listing.
+			listingData = result.rows[0];
+				// I *think* we can do this, instead of
+				// listingData.myField = result.rows[0].myField; ...
+				// ... RIGHT???
+			callback();
+			return;
+		});
 	}
+
+
+
 
 };
 
