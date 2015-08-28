@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Browse = require('../models/browseModel');
 
-var BrowseController = (function() {
+var BrowseController = function() {
 
 	return {
 
@@ -26,6 +26,6 @@ var BrowseController = (function() {
 
 	};
 
-})();
+};
 
 module.exports = BrowseController;

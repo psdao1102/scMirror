@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Listing = require('../models/listingModel');
 
-var ListingController = (function() {
+var ListingController = function() {
 
 	return {
 
@@ -26,6 +26,6 @@ var ListingController = (function() {
 
 	};
 
-})();
+};
 
 module.exports = ListingController;

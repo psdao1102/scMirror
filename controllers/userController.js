@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/userModel');
 
-var UserController = (function() {
+var UserController = function() {
 
 	return {
 
@@ -97,6 +97,6 @@ var UserController = (function() {
 
 	};
 
-})();
+};
 
 module.exports = UserController;

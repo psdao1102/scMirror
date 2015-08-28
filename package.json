@@ -5,9 +5,9 @@
   "scripts": {
     "start": "node ./startup"
   },
-  "description": "Family Fave",
+  "description": "Screen Companion",
   "author": {
-    "name": "Family Fave",
+    "name": "Screen Companion",
     "email": "stevesblog2@gmail.com"
   },
   "dependencies": {
