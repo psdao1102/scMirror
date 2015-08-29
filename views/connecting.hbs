@@ -22,7 +22,7 @@ pollConnectionEndpoint = function() {
       console.log('just heard back from the endpoint', data);
       if ( data.toString().toLowerCase() == 'true' ) {
          // awesome, the client is connected!
-         alert('Great!  Now it should open the appear.in chat ...');
+         window.open('https://appear.in/{{ClientCode}}');
       }
       else {
          // darn, keep polling.
