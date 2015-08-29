@@ -7,11 +7,11 @@
               <!-- page title -->
               <h1 class="pull-left">
                 <i class="icon-heart"></i>
-                <span>Companion Application</span>
+                <span>Client Application</span>
               </h1>
             </div>
 
-			<form role="form" method="POST" action="/user/register">
+			<form role="form" method="POST" action="/admin/addClient">
 
 				<div class="form-group">
 					<label for="firstName">First Name:</label>
@@ -32,18 +32,18 @@
 					<label for="description">Description:</label>
 					<input type="text" class="form-control" id="description" name="description">
 				</div>
-
+				
 				<div class="form-group">
-					<label for="password">Password:</label>
-					<input type="password" class="form-control" id="password" name="password">
+					<label for="code">Code:</label>
+					<input type="text" class="form-control" id="code" name="code">
+				</div>
+				
+				<div class="form-group">
+					<label for="rate">Rate:</label>
+					<input type="text" class="form-control" id="rate" name="rate">
 				</div>
 
-				<div class="form-group">
-					<label for="confirmPassword">Confirm Password:</label>
-					<input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-				</div>
-
-				<button type="submit" class="btn btn-primary">Create Account</button>
+				<button type="submit" class="btn btn-primary">Create Client</button>
 
 			</form>
 

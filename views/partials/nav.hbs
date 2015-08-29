@@ -18,15 +18,18 @@
  
 		<!-- single navigation item -->
 	    <li {{#if nav_index}} class="active" {{/if}}>
-			<a href="/">
+			
 				{{#if session.activeuser}}
-					<i class="icon-dashboard"></i>
-					<span>Dashboard</span>
+					<a href="/user/dashboard">
+						<i class="icon-dashboard"></i>
+						<span>Dashboard</span>
+					</a>
 				{{else}}
-					<i class="icon-home"></i>
-					<span>Home</span>
+					<a href="/">
+						<i class="icon-home"></i>
+						<span>Home</span>
+					</a>
 				{{/if}}
-			</a>
 	    </li>
 
 	    <!-- join -->

@@ -4,10 +4,16 @@ var router = express.Router();
 var UserController = require('./controllers/userController');
 var ListingController = require('./controllers/listingController');
 var BrowseController = require('./controllers/browseController');
+var AdminController = require('./controllers/adminController');
+var ClientConnectionController = require('./controllers/clientConnectionController');
+var DashboardController = require('./controllers/dashboardController');
 
 var userController = new UserController();
 var listingController = new ListingController();
 var browseController = new BrowseController();
+var adminController = new AdminController();
+var clientConnectionController = new ClientConnectionController();
+var dashboardController = new DashboardController();
 
 router.get('/', function (req, res) {
     res.render('index', {
@@ -22,7 +28,16 @@ router.get('/user/login', userController.login);
 router.post('/user/login', userController.post_login);
 router.get('/user/management', userController.management);
 router.post('/user/update', userController.post_update);
-router.post('/user/logout', userController.logout);
+router.get('/user/logout', userController.logout);
+router.get('/user/dashboard', userController.dashboard);
+router.post('/user/dashboard', dashboardController.getConnectingUsers);
+router.post('/user/dashboard/connectclient', dashboardController.connectClient);
+
+router.post('/connect', clientConnectionController.startConnect);
+router.post('/connect/check', clientConnectionController.checkConnection);
+
+router.get('/admin', adminController.index);
+router.post('/admin/addClient', adminController.addClient);
 
 
 router.get('/listing', function (req, res) {

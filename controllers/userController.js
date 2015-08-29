@@ -7,17 +7,22 @@ var UserController = function() {
 	return {
 
 		registerForm: function (req, res) {
+			
 			res.render('registerform', {
 				nav_registerform: true
 			});
 		},
 
 		post_register: function (req, res) {
-			if (req.body.password != req.body.ConfirmPassword) {
+			console.log("i made it into post_register");
+			console.log(req.body.password + " and " + req.body.confirmPassword)
+			if (req.body.password != req.body.confirmPassword) {
+				console.log("passwords dont match");
 				res.render('registerform', {
 					nav_registerform: true,
 					message: "Passwords do not match"
-				});	
+				});
+				return;
 			}
 			//make a user and set its information
 			var user = new User();
@@ -27,12 +32,15 @@ var UserController = function() {
 			user.setEmail(req.body.email);
 			user.setAndHashPassword(req.body.password);
 			user.insert(function (err) { //insert that user into the database
+				console.log("trying to insert");
 				if (err) {
+					console.log("error with inserting");
 					res.render('registerform', {
 						nav_registerform: true,
 						message: err
 					});	
 				}
+				console.log("rendering thank you");
 				res.render('thankyou');
 			});
 		},
@@ -93,6 +101,14 @@ var UserController = function() {
 				req.session.activeuser = null;
 			}
 			res.render('index');
+		},
+		
+		dashboard: function(req, res){
+			if(req.session.activeuser){
+				res.render('dashboard/index');
+			}else{
+				res.render('index', {message: "Server Error: Please log back in"});
+			}
 		}
 
 	};

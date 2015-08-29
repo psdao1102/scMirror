@@ -1,0 +1,36 @@
+<section id="content">
+   <div class="container">
+   <div class="row" id="content-wrapper">
+      <div class="col-xs-12">
+         <div class="row">
+            <!-- content of page -->
+            <div class="col-sm-2"></div>
+            <div class="col-sm-6">
+               <center><h1 style="margin-top:100px">Connecting...</h1></center>
+               <center><img src='/images/loading_spinner.gif'></img></center>
+            </div>
+            <div class="col-sm-4" ></div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<script type="text/javascript">
+pollConnectionEndpoint = function() {
+   $.post('/connect/check', {ClientCode: "{{ClientCode}}"})
+   .done(function(data) {
+      console.log('just heard back from the endpoint', data);
+      if ( data.toString().toLowerCase() == 'true' ) {
+         // awesome, the client is connected!
+         window.open('https://appear.in/{{ClientCode}}');
+      }
+      else {
+         // darn, keep polling.
+         setTimeout(pollConnectionEndpoint(),5000);
+      }
+   });
+}
+$(document).ready(function() {
+   pollConnectionEndpoint();
+});
+</script>

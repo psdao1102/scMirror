@@ -1,0 +1,75 @@
+<section id="content">
+	<div class="container">
+		<div class="row" id="content-wrapper">
+			<div class="col-md-2"></div>
+	  		<div class="col-md-8">
+				<center><h3>ConnectingClients</h3></center>
+				<table id="ClientTable" class="table table-striped">
+					<thead>
+						<tr>
+							<td>First Name</td>
+							<td>Last Name</td>
+							<td>Email</td>
+							<td>Notes</td>
+							<td>Code</td>
+							<td>Rate</td>
+							<td>Connect</td>
+							<td>Link</td>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var getConnectedClients = function() {
+			$.post('/user/dashboard')
+			.done(function(result) {
+				if(result.error){
+					alert(result.error);
+					return;
+				}
+				var tbody = $('#ClientTable tbody');
+				for(var i = 0; i<result.data.length; i++){
+					var tr = $('<tr></tr>');
+					var fn =  $('<td></td>').html(result.data[i].data.firstName);
+					var ln =  $('<td></td>').html(result.data[i].data.lastName);
+					var email =  $('<td></td>').html(result.data[i].data.email);
+					var notes =  $('<td></td>').html(result.data[i].data.description);
+					var code =  $('<td></td>').html(result.data[i].data.code);
+					var rate =  $('<td></td>').html(result.data[i].data.rate);
+					var connect =  $('<td></td>').html('<button class="btn btn-default ConnectBtn" id ="' + result.data[i].data.code + '">Connect</button>');
+					var link =  $('<td></td>').html('<button class="btn btn-default AppearBtn" id ="' + result.data[i].data.code + '">Open</button>');
+					tr.append(fn);
+					tr.append(ln);
+					tr.append(email);
+					tr.append(notes);
+					tr.append(code);
+					tr.append(rate);
+					tr.append(connect);
+					tr.append(link);
+					tbody.append(tr);
+				}
+			});
+			$("body").on('click', '.AppearBtn', function(){
+				var code = $(this).attr('id');
+				window.open("https://appear.in/" + code);
+			});
+			
+			$("body").on('click', '.ConnectBtn', function(){
+				var code = $(this).attr('id');
+				$.post('/user/dashboard/connectclient', {ClientCode:code}).done(function(result){
+					if(result.error){
+						alert(result.error);
+					}
+				});
+			});
+		}
+		$(document).ready(function() {
+			getConnectedClients();
+		});
+	</script>
+</section>
