@@ -6,7 +6,6 @@ Code stuff:
  - Grunt workflow
  - routes.js
 
-
 User
  - role (companion or operator)
  - state (offline, away, online, beforeConnected, connected, afterConnected)
@@ -49,3 +48,9 @@ Functionality for User:
 Operator needs:
  - see live, editable table of clients segmented into beforeConnected, afterConnected, connected
  - ability to see similar table for users
+
+
+Style Notes:
+ - Primary color: #002e66
+ - Secondary color: #6e0022
+ - Accent color: #ffffff

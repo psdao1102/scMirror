@@ -102,12 +102,29 @@ module.exports = function(grunt) {
           'compass'
         ]
       },
+      css: {
+        files: [
+          'public/css/**/*'
+        ],
+        tasks: [
+          'clean:css',
+          'compass:dev',
+          'concat:css'
+        ]
+      },
       options: {
         spawn: false
       }
     },
 
-    clean: ['public/build/**/*']
+    clean: {
+      css: [
+        'public/build/css/build.css'
+      ],
+      all: [
+        'public/build/**/*'
+      ]
+    }
 
   });
 
@@ -120,6 +137,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', [
+    'clean',
     'concat:js',
     'uglify',
     'compass:dev',
