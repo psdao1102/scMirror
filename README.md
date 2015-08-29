@@ -54,3 +54,15 @@ Style Notes:
  - Primary color: #002e66
  - Secondary color: #6e0022
  - Accent color: #ffffff
+ 
+ How to test current product
+  - Go to /admin
+  - create user(remember code)
+  - Open differnet browser
+  - click join and create account
+  - sign in
+  - click dashboard
+  - go to first browser, go to home page, and enter code
+  - go to second browser, refresh dashboard page and the user should show up.
+  - clicking open will open an appear.in page with the code
+  - clicking connect will open the appear.in page on the first browser
