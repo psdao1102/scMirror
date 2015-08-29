@@ -31,6 +31,16 @@ Client.prototype = {
 	insertStatement: 'INSERT INTO "client"("firstName","lastName","email","description", "clientstateid", "code", "rate") VALUES($1,$2,$3,$4,$5,$6,$7)',
 	updateStatement: 'UPDATE "client" SET "firstName" = $1, "lastName"=$2,"email"=$3,"description"=$4,"clientstateid"=$5, "code"=$6, "rate"=$7 WHERE "id"=$8',
 
+	fillUsingRow:function(row){
+		this.data.id = row.id; //if we get a row setup the clientdata to equal that of the client data in the row.
+		this.data.firstName = row.firstName;
+		this.data.lastName = row.lastName;
+		this.data.description = row.description;
+		this.data.clientState = row.clientstateid;
+		this.data.code = row.code;
+		this.data.rate = row.rate;	
+	},
+	
 	insert: function (callback) {
 		var clientData = this.data;
 		var connection = new PGConnection();
@@ -69,7 +79,7 @@ Client.prototype = {
 	},
 
 	findByEmail: function (callback) {
-		var clientData = this.data;
+		var client = this;
 		var connection = new PGConnection();
 		connection.executeQuery(Client.prototype.findByEmailStatement, [clientData.email], function (err, result) {
 			if (err) { //if error log, and return
@@ -81,22 +91,16 @@ Client.prototype = {
 				callback("client not Found");
 				return;
 			}
-			clientData.id = result.rows[0].id; //if we get a row setup the clientdata to equal that of the client data in the row.
-			clientData.firstName = result.rows[0].firstName;
-			clientData.lastName = result.rows[0].lastName;
-			clientData.description = result.rows[0].description;
-			clientData.clientState = result.rows[0].clientState;
-			clientData.code = result.rows[0].code;
-			clientData.rate = result.rows[0].rate;
+			client.fillUsingRow(result.rows[0]);
 			callback();
 			return;
 		});
 	},
 	
 	findByCode: function (callback) {
-		var clientData = this.data;
+		var client = this;
 		var connection = new PGConnection();
-		connection.executeQuery(Client.prototype.findByCodeStatement, [clientData.code], function (err, result) {
+		connection.executeQuery(Client.prototype.findByCodeStatement, [client.data.code], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
 				callback("Server Error: Please try Again Later");
@@ -106,13 +110,7 @@ Client.prototype = {
 				callback("client not Found");
 				return;
 			}
-			clientData.id = result.rows[0].id; //if we get a row setup the clientdata to equal that of the client data in the row.
-			clientData.firstName = result.rows[0].firstName;
-			clientData.lastName = result.rows[0].lastName;
-			clientData.description = result.rows[0].description;
-			clientData.clientState = result.rows[0].clientstateid;
-			clientData.code = result.rows[0].code;
-			clientData.rate = result.rows[0].rate;
+			client.fillUsingRow(result.rows[0]);
 			callback();
 			return;
 		});

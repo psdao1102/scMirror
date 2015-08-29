@@ -1,5 +1,4 @@
 var express = require('express');
-var router = express.Router();
 var Client = require('../models/clientModel')
 
 var ClientConnectionController = function() {

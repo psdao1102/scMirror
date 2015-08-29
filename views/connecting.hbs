@@ -16,7 +16,6 @@
 </section>
 
 <script type="text/javascript">
-alert("{{ClientCode}}");
 pollConnectionEndpoint = function() {
    $.post('/connect/check', {ClientCode: "{{ClientCode}}"})
    .done(function(data) {
