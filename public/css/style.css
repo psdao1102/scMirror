@@ -1,3 +1,7 @@
+header .navbar {
+	background-color:#ffffff;
+	border-bottom:1px solid #002e66;
+}
 header .navbar > .nav > li.dark > a {
 	background:#6e0022;
 }

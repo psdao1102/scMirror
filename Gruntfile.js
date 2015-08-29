@@ -99,7 +99,9 @@ module.exports = function(grunt) {
           'public/theme/compass/sass/**/*'
         ],
         tasks: [
-          'compass'
+          'clean:css',
+          'compass:dev',
+          'concat:css'
         ]
       },
       css: {
