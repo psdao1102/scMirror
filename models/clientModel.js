@@ -110,7 +110,7 @@ Client.prototype = {
 			clientData.firstName = result.rows[0].firstName;
 			clientData.lastName = result.rows[0].lastName;
 			clientData.description = result.rows[0].description;
-			clientData.clientState = result.rows[0].clientState;
+			clientData.clientState = result.rows[0].clientstateid;
 			clientData.code = result.rows[0].code;
 			clientData.rate = result.rows[0].rate;
 			callback();
