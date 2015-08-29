@@ -1,0 +1,53 @@
+﻿<section id="content">
+  <div class="container">
+    <div class="row" id="content-wrapper">
+      <div class="col-md-8">
+
+            <div class="page-header">
+              <!-- page title -->
+              <h1 class="pull-left">
+                <i class="icon-heart"></i>
+                <span>Client Application</span>
+              </h1>
+            </div>
+
+			<form role="form" method="POST" action="/admin/addClient">
+
+				<div class="form-group">
+					<label for="firstName">First Name:</label>
+					<input type="text" class="form-control" id="firstName" name="firstName">
+				</div>
+
+				<div class="form-group">
+					<label for="lastName">Last Name:</label>
+					<input type="text" class="form-control" id="lastName" name="lastName">
+				</div>
+
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input type="email" class="form-control" id="email" name="email">
+				</div>
+
+				<div class="form-group">
+					<label for="description">Description:</label>
+					<input type="text" class="form-control" id="description" name="description">
+				</div>
+				
+				<div class="form-group">
+					<label for="code">Code:</label>
+					<input type="text" class="form-control" id="code" name="code">
+				</div>
+				
+				<div class="form-group">
+					<label for="rate">Rate:</label>
+					<input type="text" class="form-control" id="rate" name="rate">
+				</div>
+
+				<button type="submit" class="btn btn-primary">Create Client</button>
+
+			</form>
+
+	  </div>
+	</div>
+  </div>
+</section>
