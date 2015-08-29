@@ -101,6 +101,14 @@ var UserController = function() {
 				req.session.activeuser = null;
 			}
 			res.render('index');
+		},
+		
+		dashboard: function(req, res){
+			if(req.session.activeuser){
+				res.render('dashboard/index');
+			}else{
+				res.render('index', {message: "Server Error: Please log back in"});
+			}
 		}
 
 	};
