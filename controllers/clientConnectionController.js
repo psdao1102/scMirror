@@ -21,7 +21,6 @@ var ClientConnectionController = function() {
 		});
 	}
 	return {
-
 		startConnect: function (req, res) { //get client with code, then set client state to beforeConnecting
 			find(req.body.code, function(err,mClient){
 				if(err){ //if error send back to index with error message
