@@ -37,14 +37,14 @@ var ClientConnectionController = function() {
 						});
 					}
 					res.render('connecting',{
-						ClientCode:mClient.code
+						ClientCode:mClient.data.code
 					});
 				}); //END UPDATE
 				
 			}); //END FIND
 		}, //END CONNECT
 		checkConnection: function(req,res){
-			find(req.body.code, function(err,mClient){
+			find(req.body.ClientCode, function(err,mClient){
 				if(err){ //if error send back to index with error message
 					console.log(err);
 					res.send("false");

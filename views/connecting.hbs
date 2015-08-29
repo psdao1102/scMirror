@@ -16,18 +16,10 @@
 </section>
 
 <script type="text/javascript">
+alert("{{ClientCode}}");
 pollConnectionEndpoint = function() {
-   $.ajax({
-      dataType: 'text',
-      url: '/connect/check',
-      contentType: 'application/json',
-      processData: false,
-      method: 'POST',
-      data: {
-         "ClientCode": "{{ClientCode}}"
-      },
-      cache: false
-   }).done(function(data) {
+   $.post('/connect/check', {ClientCode: "{{ClientCode}}"})
+   .done(function(data) {
       console.log('just heard back from the endpoint', data);
       if ( data.toString().toLowerCase() == 'true' ) {
          // awesome, the client is connected!
@@ -35,7 +27,7 @@ pollConnectionEndpoint = function() {
       }
       else {
          // darn, keep polling.
-         pollConnectionEndpoint();
+         setTimeout(pollConnectionEndpoint(),5000);
       }
    });
 }
