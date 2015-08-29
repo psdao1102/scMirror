@@ -29,6 +29,7 @@ router.post('/user/update', userController.post_update);
 router.get('/user/logout', userController.logout);
 
 router.post('/connect', clientConnectionController.startConnect);
+router.post('/connect/check', clientConnectionController.checkConnection);
 
 router.get('/admin', adminController.index);
 router.post('/admin/addClient', adminController.addClient);

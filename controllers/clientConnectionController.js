@@ -42,8 +42,23 @@ var ClientConnectionController = function() {
 				}); //END UPDATE
 				
 			}); //END FIND
-		} //END CONNECT
-		
+		}, //END CONNECT
+		checkConnection: function(req,res){
+			find(req.body.code, function(err,mClient){
+				if(err){ //if error send back to index with error message
+					console.log(err);
+					res.send("false");
+					return;
+				}
+				if(mClient.data.clientState === mClient.clientStates.connected){
+					res.send("true");
+					return;
+				}else{
+					res.send("false");
+					return;
+				}
+			}); //END FIND
+		}//END CHECK CONNECTION
 	};
 
 };
