@@ -5,11 +5,13 @@ var UserController = require('./controllers/userController');
 var ListingController = require('./controllers/listingController');
 var BrowseController = require('./controllers/browseController');
 var AdminController = require('./controllers/adminController');
+var ClientConnectionController = require('./controllers/clientConnectionController');
 
 var userController = new UserController();
 var listingController = new ListingController();
 var browseController = new BrowseController();
 var adminController = new AdminController();
+var clientConnectionController = new ClientConnectionController();
 
 router.get('/', function (req, res) {
     res.render('index', {
@@ -25,6 +27,8 @@ router.post('/user/login', userController.post_login);
 router.get('/user/management', userController.management);
 router.post('/user/update', userController.post_update);
 router.post('/user/logout', userController.logout);
+
+router.post('/connect', clientConnectionController.startConnect);
 
 router.get('/admin', adminController.index);
 router.post('/admin/addClient', adminController.addClient);

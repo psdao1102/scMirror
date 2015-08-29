@@ -27,9 +27,9 @@ Client.prototype = {
 		afterConnected:6
 	},
 	findByEmailStatement: 'SELECT * FROM "client" WHERE "email" = $1 limit 1',
-	findByIdStatement: 'SELECT * FROM "client" WHERE "id" = $1 limit 1',
+	findByCodeStatement: 'SELECT * FROM "client" WHERE "code" = $1 limit 1',
 	insertStatement: 'INSERT INTO "client"("firstName","lastName","email","description", "clientstateid", "code", "rate") VALUES($1,$2,$3,$4,$5,$6,$7)',
-	updateStatement: 'UPDATE "client" SET "firstName" = $1, "lastName"=$2,"email"=$3,"description"=$4,"clientstateid"=$5, "code"=$6, "rate"=$7 WHERE "id"=$5',
+	updateStatement: 'UPDATE "client" SET "firstName" = $1, "lastName"=$2,"email"=$3,"description"=$4,"clientstateid"=$5, "code"=$6, "rate"=$7 WHERE "id"=$8',
 
 	insert: function (callback) {
 		var clientData = this.data;
@@ -71,7 +71,7 @@ Client.prototype = {
 	findByEmail: function (callback) {
 		var clientData = this.data;
 		var connection = new PGConnection();
-		connection.executeQuery(Client.prototype.selectStatement, [clientData.email], function (err, result) {
+		connection.executeQuery(Client.prototype.findByEmailStatement, [clientData.email], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
 				callback("Server Error: Please try Again Later");
@@ -93,10 +93,10 @@ Client.prototype = {
 		});
 	},
 	
-	findById: function (password, callback) {
+	findByCode: function (callback) {
 		var clientData = this.data;
 		var connection = new PGConnection();
-		connection.executeQuery(Client.prototype.selectStatement, [clientData.id], function (err, result) {
+		connection.executeQuery(Client.prototype.findByCodeStatement, [clientData.code], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
 				callback("Server Error: Please try Again Later");
