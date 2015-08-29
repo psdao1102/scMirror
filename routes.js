@@ -26,7 +26,7 @@ router.get('/user/login', userController.login);
 router.post('/user/login', userController.post_login);
 router.get('/user/management', userController.management);
 router.post('/user/update', userController.post_update);
-router.post('/user/logout', userController.logout);
+router.get('/user/logout', userController.logout);
 
 router.post('/connect', clientConnectionController.startConnect);
 
