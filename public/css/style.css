@@ -1,7 +1,20 @@
 header .navbar {
 	background-color:#ffffff;
 	border-bottom:1px solid #002e66;
+	min-height:60px;
 }
-header .navbar > .nav > li.dark > a {
-	background:#6e0022;
+header .navbar .navbar-brand {
+	line-height:60px;
+}
+header .navbar .toggle-nav {
+	margin-top:15px;
+}
+header .navbar > .nav > li.dark > a,
+header .navbar > .nav > li.dark > a:hover,
+header .navbar > .nav > li.dark > a:active {
+	background:#6e0022 !important;
+	line-height:39px !important;
+}
+#main-nav {
+	top:60px;
 }
