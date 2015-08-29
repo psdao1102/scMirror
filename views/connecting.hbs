@@ -14,3 +14,32 @@
       </div>
    </div>
 </section>
+
+<script type="text/javascript">
+pollConnectionEndpoint = function() {
+   $.ajax({
+      dataType: 'text',
+      url: '/connect/check',
+      contentType: 'application/json',
+      processData: false,
+      method: 'POST',
+      data: {
+         "ClientCode": "{{ClientCode}}"
+      },
+      cache: false
+   }).done(function(data) {
+      console.log('just heard back from the endpoint', data);
+      if ( data.toString().toLowerCase() == 'true' ) {
+         // awesome, the client is connected!
+         alert('Great!  Now it should open the appear.in chat ...');
+      }
+      else {
+         // darn, keep polling.
+         pollConnectionEndpoint();
+      }
+   });
+}
+$(document).ready(function() {
+   pollConnectionEndpoint();
+});
+</script>
