@@ -140,7 +140,7 @@ Listing.prototype = {
 
 	insertProduct: function (callback) {
 		var listingData = this.data;
-		var connection = new PGConnection();
+		var connection = new PGConnection("prod");
 		connection.executeQuery(Listing.prototype.insertStatementProduct, [listingData.title,listingData.description,listingData.authorName,listingData.authorBio,listingData.idBarcode,listingData.idAmazon,listingData.specs], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
@@ -155,7 +155,7 @@ Listing.prototype = {
 
 	insertRecipe: function (callback) {
 		var listingData = this.data;
-		var connection = new PGConnection();
+		var connection = new PGConnection("prod");
 		connection.executeQuery(Listing.prototype.insertStatementRecipe, [listingData.title,listingData.description,listingData.authorName,listingData.authorBio,listingData.ingredients,listingData.directions,listingData.prepTime,listingData.cookTime,listingData.readyTime], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
@@ -170,7 +170,7 @@ Listing.prototype = {
 
 	get: function (id, callback) {
 		var listingData = this.data;
-		var connection = new PGConnection();
+		var connection = new PGConnection("prod");
 		connection.executeQuery(Listing.prototype.selectStatement, [listingData.id], function (err, result) {
 			if (result.rows.length <= 0) { //no rows means we did not find a product with this id
 				callback("User not Found");
