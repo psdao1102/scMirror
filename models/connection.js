@@ -1,6 +1,6 @@
 ﻿var pg = require('pg');
 
-var PGConnection = function (mode) {
+var PGConnection = function () {
 	this.client = new pg.Client(this.conString);
 
 	this.executeQuery = function (sqlStr, values, callback) {
@@ -21,7 +21,7 @@ var PGConnection = function (mode) {
 	}.bind(this);
 };
 
-PGConnection.prototype.conString = {prod:"postgres://postgres:helpingthenextbillion@45.55.43.20/postgres", testing: "postgres://postgres:helpingthenextbillion@45.55.43.20/test"};
+PGConnection.prototype.conString = "postgres://postgres:helpingthenextbillion@45.55.43.20/postgres";
 PGConnection.prototype.ERRORTYPES = { //allows for easy lookup of what type of error we got, so that we can do logic to handle errors
 	CONNECTIONFAILED:0,
 	QUERYFAILED: 1,

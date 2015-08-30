@@ -6,7 +6,7 @@ var DashboardController = function(){
 	var selectConnectingUsersStatement = 'SELECT * FROM "client" WHERE "clientstateid" = 4';
 	return {
 		getConnectingUsers: function(req,res){
-			var connection = new PGConnection("prod");
+			var connection = new PGConnection();
 			connection.executeQuery(selectConnectingUsersStatement, null, function (err, result) {	
 				if(err){
 					console.log(err);

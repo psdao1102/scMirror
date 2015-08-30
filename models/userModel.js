@@ -71,7 +71,7 @@ User.prototype = {
 
 	insert: function (callback) {
 		var userData = this.data;
-		var connection = new PGConnection("prod");
+		var connection = new PGConnection();
 		connection.executeQuery(User.prototype.insertStatement, [userData.firstName, userData.lastName, userData.email, userData.password, userData.description ], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
@@ -90,7 +90,7 @@ User.prototype = {
 			return;
 		}
 		var userData = this.data;
-		var connection = new PGConnection("prod");
+		var connection = new PGConnection();
 		connection.executeQuery(User.prototype.updateStatement, [userData.firstName, userData.lastName, userData.email, userData.description, userData.id], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
@@ -104,7 +104,7 @@ User.prototype = {
 
 	find: function (password, callback) {
 		var userData = this.data;
-		var connection = new PGConnection("prod");
+		var connection = new PGConnection();
 		connection.executeQuery(User.prototype.selectStatement, [userData.email], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);

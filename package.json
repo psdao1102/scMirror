@@ -3,8 +3,7 @@
   "version": "0.0.01",
   "private": true,
   "scripts": {
-    "start": "node ./startup",
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "start": "node ./startup"
   },
   "description": "Screen Companion",
   "author": {

@@ -43,7 +43,7 @@ Client.prototype = {
 	
 	insert: function (callback) {
 		var clientData = this.data;
-		var connection = new PGConnection("prod");
+		var connection = new PGConnection();
 		connection.executeQuery(Client.prototype.insertStatement, 
 			[clientData.firstName, clientData.lastName, clientData.email, clientData.description, clientData.clientState, clientData.code, clientData.rate], 
 			function (err, result) {
@@ -64,7 +64,7 @@ Client.prototype = {
 			return;
 		}
 		var clientData = this.data;
-		var connection = new PGConnection("prod");
+		var connection = new PGConnection();
 		connection.executeQuery(Client.prototype.updateStatement, 
 			[clientData.firstName, clientData.lastName, clientData.email, clientData.description, clientData.clientState, clientData.code, clientData.rate, clientData.id], 
 			function (err, result) {
@@ -80,7 +80,7 @@ Client.prototype = {
 
 	findByEmail: function (callback) {
 		var client = this;
-		var connection = new PGConnection("prod");
+		var connection = new PGConnection();
 		connection.executeQuery(Client.prototype.findByEmailStatement, [clientData.email], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
@@ -99,7 +99,7 @@ Client.prototype = {
 	
 	findByCode: function (callback) {
 		var client = this;
-		var connection = new PGConnection("prod");
+		var connection = new PGConnection();
 		connection.executeQuery(Client.prototype.findByCodeStatement, [client.data.code], function (err, result) {
 			if (err) { //if error log, and return
 				console.log(err);
